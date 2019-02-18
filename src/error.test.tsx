@@ -20,4 +20,15 @@ describe("Error", () => {
             )).
             toBe(true);
     });
+
+    it ('has className error if inactive', () => {
+        const wrapper = shallow(
+            <Error active={false} />
+        );
+        expect(
+            wrapper.containsMatchingElement(
+                <div className='error'/>
+            )).
+            toBe(true);
+    });
 })
