@@ -7,28 +7,44 @@ import Error, {Props as ErrorProps} from './error';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe("Error", () => {
-    // todo vars here
-
-    it ('has className open-error if active', () => {
-        const wrapper = shallow(
+describe("Error active", () => {
+    let wrapper = null;
+    beforeEach(() => {
+        wrapper = shallow(
             <Error active={true} />
         );
+    });
+
+    it ('has className open-error', () => {
         expect(
             wrapper.containsMatchingElement(
                 <div className='open-error'/>
             )).
             toBe(true);
     });
+})
 
-    it ('has className error if inactive', () => {
-        const wrapper = shallow(
+describe("Error inactive", () => {
+    let wrapper = null;
+    beforeEach(() => {
+        wrapper = shallow(
             <Error active={false} />
         );
+    });
+
+    it ('has className error', () => {
         expect(
             wrapper.containsMatchingElement(
                 <div className='error'/>
             )).
             toBe(true);
     });
+    
+    it ('has maxHeight', () => {
+        expect(
+            wrapper.containsMatchingElement(
+                <div style={{maxHeight: "40px"}}/>
+            )).
+            toBe(true);
+    });    
 })

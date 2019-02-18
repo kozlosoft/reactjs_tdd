@@ -5,9 +5,15 @@ interface Props {
 }
 
 class Error extends React.Component<Props, {}> {
+    private readonly maxHeightInactive: string = "40px";
+
     render() {
         return (
-            <div className={this.props.active ? 'open-error' : 'error'}>
+            <div
+                className={this.props.active ? 'open-error' : 'error'}
+                style={{
+                    maxHeight: this.maxHeightInactive
+                }}>
             </div>
         );
     }
