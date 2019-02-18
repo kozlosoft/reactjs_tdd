@@ -7,7 +7,7 @@ interface Props {
 class Error extends React.Component<Props, {}> {
     render() {
         return (
-            <div className='open-error'>
+            <div className={this.props.active ? 'open-error' : 'error'}>
             </div>
         );
     }
