@@ -1,7 +1,8 @@
 import React from 'react';
 
 interface Props {
-    active: boolean,
+    active: boolean;
+    onClick: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
 class Error extends React.Component<Props, {}> {
@@ -13,7 +14,8 @@ class Error extends React.Component<Props, {}> {
                 className={this.props.active ? 'open-error' : 'error'}
                 style={{
                     maxHeight: this.maxHeightInactive
-                }}>
+                }}
+                onClick={this.props.onClick}>
             </div>
         );
     }

@@ -9,9 +9,13 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe("Error active", () => {
     let wrapper = null;
+    let onClickMock = null;
     beforeEach(() => {
+        onClickMock = jest.fn();
         wrapper = shallow(
-            <Error active={true} />
+            <Error 
+                active={true} 
+                onClick={onClickMock}/>
         );
     });
 
@@ -21,6 +25,12 @@ describe("Error active", () => {
                 <div className='open-error'/>
             )).
             toBe(true);
+    });
+
+    it ('redirects onClick to props', () => {
+        expect(onClickMock.mock.calls.length).toBe(0);
+        wrapper.simulate('click');
+        expect(onClickMock.mock.calls.length).toBe(1);
     });
 })
 
